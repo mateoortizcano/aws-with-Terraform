@@ -1,0 +1,218 @@
+{
+    "CallerReference": "string",
+    "Aliases": {
+      "Quantity": integer,
+      "Items": ["string", ...]
+    },
+    "DefaultRootObject": "string",
+    "Origins": {
+      "Quantity": integer,
+      "Items": [
+        {
+          "Id": "string",
+          "DomainName": "string",
+          "OriginPath": "string",
+          "CustomHeaders": {
+            "Quantity": integer,
+            "Items": [
+              {
+                "HeaderName": "string",
+                "HeaderValue": "string"
+              }
+              ...
+            ]
+          },
+          "S3OriginConfig": {
+            "OriginAccessIdentity": "string"
+          },
+          "CustomOriginConfig": {
+            "HTTPPort": integer,
+            "HTTPSPort": integer,
+            "OriginProtocolPolicy": "http-only"|"match-viewer"|"https-only",
+            "OriginSslProtocols": {
+              "Quantity": integer,
+              "Items": ["SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2", ...]
+            },
+            "OriginReadTimeout": integer,
+            "OriginKeepaliveTimeout": integer
+          }
+        }
+        ...
+      ]
+    },
+    "OriginGroups": {
+      "Quantity": integer,
+      "Items": [
+        {
+          "Id": "string",
+          "FailoverCriteria": {
+            "StatusCodes": {
+              "Quantity": integer,
+              "Items": [integer, ...]
+            }
+          },
+          "Members": {
+            "Quantity": integer,
+            "Items": [
+              {
+                "OriginId": "string"
+              }
+              ...
+            ]
+          }
+        }
+        ...
+      ]
+    },
+    "DefaultCacheBehavior": {
+      "TargetOriginId": "string",
+      "ForwardedValues": {
+        "QueryString": true|false,
+        "Cookies": {
+          "Forward": "none"|"whitelist"|"all",
+          "WhitelistedNames": {
+            "Quantity": integer,
+            "Items": ["string", ...]
+          }
+        },
+        "Headers": {
+          "Quantity": integer,
+          "Items": ["string", ...]
+        },
+        "QueryStringCacheKeys": {
+          "Quantity": integer,
+          "Items": ["string", ...]
+        }
+      },
+      "TrustedSigners": {
+        "Enabled": true|false,
+        "Quantity": integer,
+        "Items": ["string", ...]
+      },
+      "ViewerProtocolPolicy": "allow-all"|"https-only"|"redirect-to-https",
+      "MinTTL": long,
+      "AllowedMethods": {
+        "Quantity": integer,
+        "Items": ["GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE", ...],
+        "CachedMethods": {
+          "Quantity": integer,
+          "Items": ["GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE", ...]
+        }
+      },
+      "SmoothStreaming": true|false,
+      "DefaultTTL": long,
+      "MaxTTL": long,
+      "Compress": true|false,
+      "LambdaFunctionAssociations": {
+        "Quantity": integer,
+        "Items": [
+          {
+            "LambdaFunctionARN": "string",
+            "EventType": "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+            "IncludeBody": true|false
+          }
+          ...
+        ]
+      },
+      "FieldLevelEncryptionId": "string"
+    },
+    "CacheBehaviors": {
+      "Quantity": integer,
+      "Items": [
+        {
+          "PathPattern": "string",
+          "TargetOriginId": "string",
+          "ForwardedValues": {
+            "QueryString": true|false,
+            "Cookies": {
+              "Forward": "none"|"whitelist"|"all",
+              "WhitelistedNames": {
+                "Quantity": integer,
+                "Items": ["string", ...]
+              }
+            },
+            "Headers": {
+              "Quantity": integer,
+              "Items": ["string", ...]
+            },
+            "QueryStringCacheKeys": {
+              "Quantity": integer,
+              "Items": ["string", ...]
+            }
+          },
+          "TrustedSigners": {
+            "Enabled": true|false,
+            "Quantity": integer,
+            "Items": ["string", ...]
+          },
+          "ViewerProtocolPolicy": "allow-all"|"https-only"|"redirect-to-https",
+          "MinTTL": long,
+          "AllowedMethods": {
+            "Quantity": integer,
+            "Items": ["GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE", ...],
+            "CachedMethods": {
+              "Quantity": integer,
+              "Items": ["GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE", ...]
+            }
+          },
+          "SmoothStreaming": true|false,
+          "DefaultTTL": long,
+          "MaxTTL": long,
+          "Compress": true|false,
+          "LambdaFunctionAssociations": {
+            "Quantity": integer,
+            "Items": [
+              {
+                "LambdaFunctionARN": "string",
+                "EventType": "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+                "IncludeBody": true|false
+              }
+              ...
+            ]
+          },
+          "FieldLevelEncryptionId": "string"
+        }
+        ...
+      ]
+    },
+    "CustomErrorResponses": {
+      "Quantity": integer,
+      "Items": [
+        {
+          "ErrorCode": integer,
+          "ResponsePagePath": "string",
+          "ResponseCode": "string",
+          "ErrorCachingMinTTL": long
+        }
+        ...
+      ]
+    },
+    "Comment": "string",
+    "Logging": {
+      "Enabled": true|false,
+      "IncludeCookies": true|false,
+      "Bucket": "string",
+      "Prefix": "string"
+    },
+    "PriceClass": "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+    "Enabled": true|false,
+    "ViewerCertificate": {
+      "CloudFrontDefaultCertificate": true|false,
+      "IAMCertificateId": "string",
+      "ACMCertificateArn": "string",
+      "SSLSupportMethod": "sni-only"|"vip",
+      "MinimumProtocolVersion": "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+      "Certificate": "string",
+      "CertificateSource": "cloudfront"|"iam"|"acm"
+    },
+    "Restrictions": {
+      "GeoRestriction": {
+        "RestrictionType": "blacklist"|"whitelist"|"none",
+        "Quantity": integer,
+        "Items": ["string", ...]
+      }
+    },
+    "WebACLId": "string",
+    "HttpVersion": "http1.1"|"http2",
+    "IsIPV6Enabled": true|false
+  }
